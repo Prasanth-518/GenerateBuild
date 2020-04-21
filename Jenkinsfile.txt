@@ -15,6 +15,7 @@ pipeline{
         }
         success{
             echo "success"
+            bat "jfrog rt c rt-server-1 --url=http://192.168.33.20:8082 --user=admin --password=Prasanth "
             bat "jfrog rt u Hello.zip CodeBuildTest"
         }
         unstable{
