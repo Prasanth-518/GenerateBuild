@@ -15,6 +15,7 @@ pipeline{
         }
         success{
             echo "success"
+            bat "jfrog rt u Hello.zip CodeBuildTest"
         }
         unstable{
             echo "Build unstable"
