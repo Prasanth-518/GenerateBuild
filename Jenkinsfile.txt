@@ -4,7 +4,8 @@ pipeline{
         stage('build stage'){
             steps{
                 echo "We are building the application"
-                bat "Go build hello.go"
+                bat "Go build -o hello1.exe hello.go"
+                sh "Compress-Archive hello1.exe Hello.zip"
             }
         }
     }
