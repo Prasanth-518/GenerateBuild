@@ -5,7 +5,7 @@ pipeline{
             steps{
                 echo "We are building the application"
                 bat "Go build -o hello1.exe hello.go"
-                sh "Compress-Archive hello1.exe Hello.zip"
+                sh "powershell.exe Compress-Archive hello1.exe Hello.zip"
             }
         }
     }
