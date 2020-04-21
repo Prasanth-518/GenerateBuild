@@ -1,0 +1,26 @@
+pipeline{
+    agent any
+    stages{
+        stage('build stage'){
+            echo "We are building the application"
+            bat "Go build HelloWorld.go"
+        }
+    }
+    post{
+        always{
+            echo "The job is completed"
+        }
+        success{
+            echo "success"
+        }
+        unstable{
+            echo "Build unstable"
+        }
+        failure{
+            echo "Build failed"
+        }
+        changed{
+            echo "Build changed"
+        }
+    }
+}
