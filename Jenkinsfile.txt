@@ -2,8 +2,10 @@ pipeline{
     agent any
     stages{
         stage('build stage'){
-            echo "We are building the application"
-            bat "Go build HelloWorld.go"
+            steps{
+                echo "We are building the application"
+                bat "Go build HelloWorld.go"
+            }
         }
     }
     post{
