@@ -4,8 +4,7 @@ pipeline{
         stage('build stage'){
             steps{
                 echo "We are building the application"
-		echo "${env.BUILD_NUMBER}"
-                bat "Go build -o hello1.exe hello.go"
+                bat "Go build -o hello-1.0.%BUILD_NUMBER%.exe hello.go"
                 bat "powershell.exe Compress-Archive -Update hello1.exe Hello5.zip"
             }
         }
@@ -17,7 +16,7 @@ pipeline{
         success{
             echo "success"
             bat "jfrog rt c rt-server-1 --url=http://192.168.33.20:8082/artifactory --user=admin --password=Prasanth "
-            bat "jfrog rt u Hello5.zip CodeBuildtest"
+            bat "jfrog rt u Hello-1.0.%BUILD_NUMBER%.zip CodeBuildtest"
         }
         unstable{
             echo "Build unstable"
