@@ -4,8 +4,8 @@ pipeline{
         stage('build stage'){
             steps{
                 echo "We are building the application"
-                bat "Go build -o hello-1.0.%BUILD_NUMBER%.exe hello.go"
-                bat "powershell.exe Compress-Archive -Update hello1.exe Hello-1.0.%BUILD_NUMBER%.zip"
+                bat "Go build -o hello.exe hello.go"
+                bat "powershell.exe Compress-Archive  hello.exe Hello-1.0.%BUILD_NUMBER%.zip"
             }
         }
     }
