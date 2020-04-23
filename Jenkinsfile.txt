@@ -25,7 +25,7 @@ pipeline{
             echo "The job is completed"
         }
         success{
-            withVault([configuration:'config',vaultSecrets:'secret']){
+            withVault([configuration:config,vaultSecrets:secret]){
                 bat "echo %vault_sec%"
             }
             echo "success"
