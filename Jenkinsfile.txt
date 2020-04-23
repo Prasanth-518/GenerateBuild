@@ -3,7 +3,7 @@ def secrets=[[
             secretValues:[[envVar:'vault_sec',vaultKey:'test']]
             ]]
 def config=[
-            $class :'VaultAppRoleCredential'
+            
             vaultUrl:'http://192.168.33.20:8200',
             vaultCredentialId:'vault'
             ]
