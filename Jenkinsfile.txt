@@ -2,7 +2,7 @@ def secrets=[[
             path:'jenkins/jenkintest',
             secretValues:[[envVar:'vault_sec',vaultKey:'test']]
             ]]
-def config=[vaultCredentialId:'vault']
+def config=[vaultCredentialId:'vault-id']
 pipeline{
     agent any
     stages{
