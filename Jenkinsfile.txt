@@ -2,11 +2,6 @@ def secrets=[[
             path:'jenkins/jenkintest',
             secretValues:[[envVar:'vault_sec',vaultKey:'test']]
             ]]
-def config=[
-            
-            vaultUrl:'http://192.168.33.20:8200',
-            vaultCredentialId:'vault'
-            ]
     
 pipeline{
     agent any
@@ -24,7 +19,7 @@ pipeline{
             echo "The job is completed"
         }
         success{
-            withVault([configuration: config,vaultSecrets: secrets]){
+            withVault([vaultSecrets: secrets]){
                 bat "echo %vault_sec%"
             }
             echo "success"
