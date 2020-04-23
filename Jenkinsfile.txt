@@ -1,3 +1,14 @@
+def secrets=
+        [path:'jenkins/jenkintest',
+        secretValues:[
+            [envVar:'vault_sec',vaultKey:'test']
+            ]
+        ]
+def config=[
+        vaultUrl:'http://192.168.33.20:8200',
+        vaultCredentialId:'vault'
+        ]
+    
 pipeline{
     agent any
     stages{
@@ -14,6 +25,9 @@ pipeline{
             echo "The job is completed"
         }
         success{
+            withVault([configuration:'config',vaultSecrets:'secret']){
+                bat "echo %vault_sec%"
+            }
             echo "success"
             bat "jfrog rt c rt-server-1 --url=http://192.168.33.20:8082/artifactory --user=admin --password=Prasanth "
             bat "jfrog rt u Hello-1.0.%BUILD_NUMBER%.zip CodeBuildtest"
