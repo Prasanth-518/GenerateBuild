@@ -1,6 +1,6 @@
 def secrets=[[
             path:'credentials/artifactory',
-            secretValues:[[envVar:'vault_sec',vaultKey:'usr']]
+            secretValues:[[envVar:'username',vaultKey:'usr'],[envVar:'pswd',vaultKey:'pswd']]
             ]]
 def config=[vaultCredentialId: 'articreds']
 pipeline{
@@ -21,9 +21,10 @@ pipeline{
         success{
             withVault([configuration: config,vaultSecrets: secrets]){
                 bat "echo %vault_sec%"
+                bat "jfrog rt c rt-server-1 --url=http://192.168.33.20:8082/artifactory --user=%username% --password=%pswd% "
+            
             }
             echo "success"
-            bat "jfrog rt c rt-server-1 --url=http://192.168.33.20:8082/artifactory --user=admin --password=Prasanth "
             bat "jfrog rt u Hello-1.0.%BUILD_NUMBER%.zip CodeBuildtest"
         }
         unstable{
