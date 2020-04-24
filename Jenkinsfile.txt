@@ -1,8 +1,8 @@
 def secrets=[[
-            path:'jenkins/jenkintest',
-            secretValues:[[envVar:'vault_sec',vaultKey:'test']]
+            path:'credentials/artifactory',
+            secretValues:[[envVar:'vault_sec',vaultKey:'usr']]
             ]]
-def config=[vaultCredentialId: 'vault']
+def config=[vaultCredentialId: 'articreds']
 pipeline{
     agent any
     stages{
