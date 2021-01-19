@@ -33,7 +33,7 @@ pipeline{
         failure{
             echo "Build failed"
         }
-        changed{
+        changed{.
             echo "Build changed"
         }
     }
